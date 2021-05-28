@@ -21,11 +21,11 @@ namespace server.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Account>> Get()
+        public async Task<ActionResult<Profile>> Get()
         {
             try
             {
-                Profile userInfo = await HttpContext.GetUserInfoAsync<Account>();
+                Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
                 return Ok(_profilesService.GetOrCreateProfile(userInfo));
             }
             catch (Exception e)

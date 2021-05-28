@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS vaults(
   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
   name VARCHAR(255) NOT NULL COMMENT 'vault name',
   description VARCHAR (255) NOT NULL COMMENT 'vault description',
+  img VARCHAR (255) NOT NULL COMMENT 'keep imgurl',
   isPrivate BOOLEAN NOT NULL COMMENT 'is vault private',
   creatorId VARCHAR (255) NOT NULL COMMENT 'FK: profiles',
   FOREIGN KEY (creatorId) REFERENCES profiles(id) ON DELETE CASCADE
