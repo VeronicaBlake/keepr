@@ -14,6 +14,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
+using server.Repositories;
+using server.Services;
 
 namespace server
 {
@@ -41,13 +43,15 @@ namespace server
             services.AddScoped<IDbConnection>(x => CreateDbConnection());
 
             // REPOS
-            // services.AddScoped<AccountsRepository>();
-            // services.AddTransient<RestaurantsRepository>();
-            // services.AddTransient<ReviewsRepository>();
+            services.AddTransient<ProfilesRepository>();
+            services.AddTransient<KeepsRepository>();
+            services.AddTransient<VaultsRepository>();
+            services.AddTransient<VaultKeepsRepository>();
             // BL
-            // services.AddScoped<AccountService>();
-            // services.AddTransient<RestaurantsService>();
-            // services.AddTransient<ReviewsService>();
+            services.AddTransient<ProfilesService>();
+            services.AddTransient<KeepsService>();
+            services.AddTransient<VaultsService>();
+            services.AddTransient<VaultKeepsService>();
         }
 
         private void ConfigureCors(IServiceCollection services)

@@ -1,6 +1,6 @@
 namespace server.Services
 {
-    public class KeepsInVaultsService
+    public class VaultKeepsService
     {
         
     }

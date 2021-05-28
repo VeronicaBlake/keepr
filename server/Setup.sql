@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS accounts(
+CREATE TABLE IF NOT EXISTS profiles(
   id VARCHAR(255) NOT NULL primary key COMMENT 'primary key',
   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS vaults(
   name VARCHAR(255) NOT NULL COMMENT 'vault name',
   description VARCHAR (255) NOT NULL COMMENT 'vault description',
   isPrivate BOOLEAN NOT NULL COMMENT 'is vault private',
-  creatorId VARCHAR (255) NOT NULL COMMENT 'FK: accounts',
-  FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
+  creatorId VARCHAR (255) NOT NULL COMMENT 'FK: profiles',
+  FOREIGN KEY (creatorId) REFERENCES profiles(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 CREATE TABLE IF NOT EXISTS keeps(
   id INT NOT NULL AUTO_INCREMENT primary key COMMENT 'primary key',
@@ -26,17 +26,17 @@ CREATE TABLE IF NOT EXISTS keeps(
   views INT NOT NULL,
   shares INT COMMENT 'stretch goal',
   keeps INT NOT NULL,
-  creatorId VARCHAR (255) NOT NULL COMMENT 'FK: accounts',
-  FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
+  creatorId VARCHAR (255) NOT NULL COMMENT 'FK: profiles',
+  FOREIGN KEY (creatorId) REFERENCES profiles(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
-CREATE TABLE IF NOT EXISTS keeps_in_vaults(
+CREATE TABLE IF NOT EXISTS vault_keeps(
   id INT AUTO_INCREMENT NOT NULL primary key COMMENT 'primary key',
   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
-  creatorId VARCHAR (255) NOT NULL COMMENT 'FK: accounts',
+  creatorId VARCHAR (255) NOT NULL COMMENT 'FK: profiles',
   vaultId INT NOT NULL COMMENT 'FK: vault',
   keepId INT NOT NULL COMMENT 'FK: key',
-  FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
+  FOREIGN KEY (creatorId) REFERENCES profiles(id) ON DELETE CASCADE,
   FOREIGN KEY (vaultId) REFERENCES vaults(id) ON DELETE CASCADE,
   FOREIGN KEY (keepId) REFERENCES keeps(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';

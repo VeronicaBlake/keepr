@@ -1,6 +1,6 @@
 namespace server.Controllers
 {
-    public class KeepsInVaultsController
+    public class VaultKeepsController
     {
         
     }

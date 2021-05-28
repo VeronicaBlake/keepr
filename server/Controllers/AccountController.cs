@@ -1,31 +1,31 @@
-using Microsoft.AspNetCore.Mvc;
-using server.Services;
 using System;
 using System.Threading.Tasks;
 using CodeWorks.Auth0Provider;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using server.Models;
+using server.Services;
 
 namespace server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProfilesController : ControllerBase
+    public class AccountController : ControllerBase
     {
         private readonly ProfilesService _profilesService;
 
-        public ProfilesController(ProfilesService profilesService)
+        public AccountController(ProfilesService profilesService)
         {
             _profilesService = profilesService;
         }
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Profile>> Get()
+        public async Task<ActionResult<Account>> Get()
         {
             try
             {
-                Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+                Profile userInfo = await HttpContext.GetUserInfoAsync<Account>();
                 return Ok(_profilesService.GetOrCreateProfile(userInfo));
             }
             catch (Exception e)

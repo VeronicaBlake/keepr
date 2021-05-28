@@ -1,6 +1,6 @@
 namespace server.Repositories
 {
-    public class KeepsInVaultsRepository
+    public class VaultKeepsRepository
     {
         
     }
