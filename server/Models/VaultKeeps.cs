@@ -1,9 +1,9 @@
 namespace server.Models
 {
-    public class VaultKeeps : DbItem
+    public class VaultKeeps : Keep
     {
         public string creatorId { get; set; }
-        public string vaultId { get; set; }
-        public string keepid { get; set; }
+        public int vaultId { get; set; }
+        public int keepId { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace server.Models
         public int Views { get; set; } = 0;
         public int Shares { get; set; } = 0;
         public int Keeps { get; set; } = 0;
-        public int CreatorId { get; set; }
+        public string CreatorId { get; set; }
         public Profile Creator { get; set; }
 
     }
