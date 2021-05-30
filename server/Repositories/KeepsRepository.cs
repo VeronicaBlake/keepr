@@ -23,7 +23,7 @@ namespace server.Repositories
 
         internal Keep GetById(int id)
         {
-            string sql = "SELECT * FROM keep WHERE id = @id";
+            string sql = "SELECT * FROM keeps WHERE id = @id";
             //   Query first or default returns a single item or null 
             //   (though if it's null that should be caught in service?)
             return _db.QueryFirstOrDefault<Keep>(sql, new { id });
@@ -33,10 +33,10 @@ namespace server.Repositories
         {
             string sql = @"
         INSERT INTO keeps
-        (name, description, img, )
+        (name, description, img, creatorId)
         VALUES
-        (@Name, @Description, @Img);
-        SELECT LAST_INSERT_ID()";
+        (@Name, @Description, @Img, @CreatorId);
+        SELECT LAST_INSERT_ID();";
             //these are the things without default in the model
 
             newKeep.Id = _db.ExecuteScalar<int>(sql, newKeep);
@@ -47,10 +47,14 @@ namespace server.Repositories
         internal Keep Update(Keep k)
         {
             string sql = @"
-            UPDATE keep 
+            UPDATE keeps 
             SET 
                 name = @Name,
-                location = @Location
+                description = @Description,
+                img = @Img,
+                views = @Views,
+                shares = @Shares,
+                keeps = @Keeps
             WHERE id = @Id;
             ";
             _db.Execute(sql, k);
@@ -64,3 +68,4 @@ namespace server.Repositories
         }
     }
 }
+//GetProfilesKeeps, Create, GetAll, GeetKeepById, Update, Remove
