@@ -41,11 +41,3 @@ CREATE TABLE IF NOT EXISTS vault_keeps(
   FOREIGN KEY (vaultId) REFERENCES vaults(id) ON DELETE CASCADE,
   FOREIGN KEY (keepId) REFERENCES keeps(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
--- INSERT INTO
--- vaults(name, description, isPrivate, creatorId)
--- VALUES
--- ("doggos", "a vault full of dogs", 2, INSERT CREATOR ID HERE );
--- SELECT
--- v.*
--- v.id AS vaultId,
--- k.

@@ -61,6 +61,7 @@ namespace server.Services
             _krepo.Remove(id);
         }
 
+        //TODO this v
         internal IEnumerable<Keep> GetKeepByProfileId(string id1, string id2)
         {
             throw new NotImplementedException();
@@ -69,3 +70,4 @@ namespace server.Services
 }
 
 //GetProfilesKeeps, 
+//keep will need to reference 

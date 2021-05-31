@@ -1,4 +1,3 @@
-using System;
 using server.Models;
 using server.Repositories;
 
@@ -21,6 +20,9 @@ namespace server.Services
             return profile;
         }
 
+        internal Profile GetProfileById(string id)
+        {
+            return _pr.GetById(id);
+        }
     }
 }
-//GetOrCreateProfile, GetProfileById

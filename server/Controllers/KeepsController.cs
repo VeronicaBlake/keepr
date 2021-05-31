@@ -21,7 +21,7 @@ namespace server.Controllers
             _kservice = kservice;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<Keep>> GetAll()
+        public ActionResult<IEnumerable<Keep>> GetAllKeeps()
         {
             try
             {
@@ -35,7 +35,7 @@ namespace server.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Keep> GetById(int id)
+        public ActionResult<Keep> GetKeepById(int id)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace server.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult<Keep> Create([FromBody] Keep newKeep)
+        public ActionResult<Keep> CreateKeep([FromBody] Keep newKeep)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace server.Controllers
         [Authorize]
         [HttpPut("{id}")]
 
-        public async Task<ActionResult<Keep>> Update(int id, [FromBody] Keep k)
+        public async Task<ActionResult<Keep>> UpdateKeep(int id, [FromBody] Keep k)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace server.Controllers
         [Authorize]
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult<string>> Remove(int id)
+        public async Task<ActionResult<string>> RemoveKeep(int id)
         {
             try
             {
@@ -100,4 +100,3 @@ namespace server.Controllers
     }
 }
 
-//Create, GetAll, GetById, UpdateKeep, RemoveKeep, 

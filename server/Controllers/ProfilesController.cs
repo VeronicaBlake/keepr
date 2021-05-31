@@ -40,13 +40,27 @@ namespace server.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<Profile> GetProfile(string id)
+        {
+            try
+            {
+                Profile p = _pservice.GetProfileById(id);
+                return Ok(p);
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpGet("{id}/vaults")]
         public async Task<ActionResult<List<Vault>>> GetVaultsByProfileId(string id)
         {
             try
             {
                 Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-                IEnumerable<Vault> vaults = _vservice.GetVaultByProfileId(id, userInfo.Id);
+                IEnumerable<Vault> vaults = _vservice.GetVaultsByProfileId(id);
                 return Ok(vaults);
             }
             catch (Exception e)
